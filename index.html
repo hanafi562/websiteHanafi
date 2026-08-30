@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hanafi — Personal Space</title>
+<meta name="description" content="Personal profile, dashboard, dan portfolio pribadi.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ambient background -->
+<div class="aurora" aria-hidden="true">
+  <span class="blob blob--a"></span>
+  <span class="blob blob--b"></span>
+  <span class="blob blob--c"></span>
+</div>
+
+<!-- welcome toast -->
+<div class="toast" id="welcomeToast">
+  <span id="toastText">Welcome to my personal space 👋</span>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#home" class="navbar__brand" id="navBrandName">Hanafi.</a>
+
+    <nav class="navbar__menu" id="navMenu">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#schedule" class="nav-link">Schedule</a>
+      <a href="#achievements" class="nav-link">Achievements</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#social" class="nav-link">Social</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Ganti tema">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+      <button class="icon-btn hamburger" id="hamburgerBtn" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__content reveal">
+      <div class="hero__status">
+        <span class="status-dot"></span>
+        <span id="statusText">Available</span>
+      </div>
+
+      <div class="hero__avatar-wrap">
+        <img src="images/profile.jpg" alt="Foto profil" class="hero__avatar" id="profileImg"
+             onerror="this.onerror=null;this.src=window.FALLBACK_AVATAR;">
+      </div>
+
+      <h1 class="hero__title">
+        Hi, I'm <span class="accent" id="heroName">Hanafi</span> <span class="wave">👋</span>
+      </h1>
+      <p class="hero__username" id="heroUsername">@hanafi</p>
+      <p class="hero__bio" id="heroBio">Welcome to my personal website. Tempat aku menyimpan cerita, jadwal, karya, dan hal-hal kecil yang bikin hari terasa hidup.</p>
+
+      <div class="hero__cta">
+        <a href="#about" class="btn btn--primary">Tentang Saya</a>
+        <a href="#social" class="btn btn--ghost">Hubungi Saya</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section__head reveal">
+      <p class="eyebrow">Kenalan Yuk</p>
+      <h2>About Me</h2>
+    </div>
+
+    <div class="about__grid">
+      <div class="card about__card reveal">
+        <dl class="about__list" id="aboutList">
+          <div><dt>Nama</dt><dd id="aboutName">Hanafi</dd></div>
+          <div><dt>Nickname</dt><dd id="aboutNick">ܓܓܛܓ</dd></div>
+          <div><dt>Umur</dt><dd id="aboutAge">16 tahun</dd></div>
+          <div><dt>Hobi</dt><dd id="aboutHobby">Coding, editing, gaming</dd></div>
+          <div><dt>Minat</dt><dd id="aboutInterest">Teknologi & desain</dd></div>
+          <div><dt>Skill</dt><dd id="aboutSkillShort">Web development</dd></div>
+        </dl>
+      </div>
+
+      <div class="card about__card reveal">
+        <p class="about__desc" id="aboutDesc">
+          Aku suka belajar hal baru, terutama yang berhubungan dengan teknologi dan kreativitas.
+          Website ini adalah ruang pribadiku untuk berbagi aktivitas sehari-hari, progres belajar,
+          dan beberapa hal kecil yang menurutku layak dikenang. Santai aja mampir-mampir sini.
+        </p>
+        <p class="about__desc about__desc--extra" id="aboutDescExtra" hidden>
+          Aku percaya progres kecil yang konsisten lebih berarti daripada progres besar yang cuma sesekali.
+          Makanya di sini juga ada jadwal harian dan catatan singkat biar aku bisa terus melacak diriku sendiri.
+        </p>
+        <button class="link-btn" id="readMoreBtn">Read More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section section--tight">
+    <div class="stats reveal" id="statsGrid"></div>
+  </section>
+
+  <!-- TODAY -->
+  <section class="section" id="today">
+    <div class="section__head reveal">
+      <p class="eyebrow">Update Harian</p>
+      <h2>Apa Hari Ini?</h2>
+    </div>
+
+    <div class="today card reveal">
+      <div class="today__date">
+        <span class="today__day" id="todayDay">Minggu</span>
+        <span class="today__full" id="todayFull">30 Agustus 2026</span>
+      </div>
+      <div class="today__clock" id="todayClock">00:00:00</div>
+
+      <div class="today__plan">
+        <h3>Today's Plan</h3>
+        <ul id="todayPlanList"></ul>
+      </div>
+
+      <div class="today__note" id="todayNoteWrap">
+        <p id="todayNote">"Keep learning, keep creating."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="section" id="schedule">
+    <div class="section__head reveal">
+      <p class="eyebrow">Rutinitas</p>
+      <h2>My Schedule</h2>
+    </div>
+    <div class="timeline" id="scheduleTimeline"></div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements">
+    <div class="section__head reveal">
+      <p class="eyebrow">Pencapaian</p>
+      <h2>My Achievements</h2>
+    </div>
+    <div class="grid grid--3" id="achievementsGrid"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section__head reveal">
+      <p class="eyebrow">Karya</p>
+      <h2>My Projects</h2>
+    </div>
+    <div class="grid grid--3" id="projectsGrid"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section__head reveal">
+      <p class="eyebrow">Kemampuan</p>
+      <h2>My Skills</h2>
+    </div>
+    <div class="grid grid--4" id="skillsGrid"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="section__head reveal">
+      <p class="eyebrow">Momen</p>
+      <h2>My Gallery</h2>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- NOTES -->
+  <section class="section section--tight">
+    <div class="card note-card reveal">
+      <p class="eyebrow">Today Notes</p>
+      <p class="note-card__text" id="notesText">"Keep learning, keep creating."</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section" id="social">
+    <div class="section__head reveal">
+      <p class="eyebrow">Terhubung</p>
+      <h2>Find Me On</h2>
+    </div>
+    <div class="grid grid--4" id="socialGrid"></div>
+  </section>
+
+  <!-- VISITOR COUNTER -->
+  <section class="section section--tight">
+    <div class="visitor reveal">
+      <span class="visitor__icon">👁️</span>
+      <span>Visitors on this device: <strong id="visitorCount">0</strong></span>
+    </div>
+    <p class="visitor__note">*Hanya menghitung kunjungan dari browser/perangkat ini, bukan jumlah pengunjung global.</p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p id="footerText">© 2026 Hanafi</p>
+  <p class="footer__made">##</p>
+  <div class="footer__social" id="footerSocial"></div>
+</footer>
+
+<!-- MUSIC PLAYER -->
+<div class="player" id="player">
+  <button class="player__dock" id="playerToggle" aria-label="Buka music player">
+    <span class="player__dock-art">
+      <img src="" alt="" id="playerCoverMini"
+           onerror="this.onerror=null;this.src=window.FALLBACK_COVER;">
+    </span>
+    <span class="player__dock-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <div class="player__panel" id="playerPanel">
+    <div class="player__panel-head">
+      <span class="player__panel-label">
+        <span class="player__panel-dot" aria-hidden="true"></span>Now Playing
+      </span>
+      <button class="player__close" id="playerClose" aria-label="Tutup player">✕</button>
+    </div>
+
+    <div class="player__art">
+      <img src="" alt="Cover lagu" id="playerCover"
+           onerror="this.onerror=null;this.src=window.FALLBACK_COVER;">
+    </div>
+
+    <div class="player__meta">
+      <p class="player__title" id="playerTitle">—</p>
+      <p class="player__artist" id="playerArtist">—</p>
+    </div>
+
+    <div class="player__progress">
+      <input type="range" id="playerSeek" value="0" min="0" max="100" step="0.1" aria-label="Progres lagu">
+      <div class="player__times">
+        <span id="playerCurrent">0:00</span>
+        <span id="playerDuration">0:00</span>
+      </div>
+    </div>
+
+    <div class="player__controls">
+      <button id="playerPrev" aria-label="Lagu sebelumnya">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 5h2v14H6zM19 5v14l-11-7z" fill="currentColor"/></svg>
+      </button>
+      <button id="playerPlay" class="player__play" aria-label="Play/Pause">
+        <svg id="playerPlayIcon" viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+      <button id="playerNext" aria-label="Lagu berikutnya">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M16 5h2v14h-2zM5 5v14l11-7z" fill="currentColor"/></svg>
+      </button>
+    </div>
+
+    <div class="player__volume">
+      <button id="playerMute" aria-label="Mute/Unmute">
+        <svg id="playerMuteIcon" viewBox="0 0 24 24" width="16" height="16"><path d="M3 10v4h4l5 5V5L7 10H3z" fill="currentColor"/></svg>
+      </button>
+      <input type="range" id="playerVolume" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">✕</button>
+  <button class="lightbox__nav lightbox__prev" id="lightboxPrev" aria-label="Sebelumnya">‹</button>
+  <img src="" alt="" id="lightboxImg">
+  <button class="lightbox__nav lightbox__next" id="lightboxNext" aria-label="Berikutnya">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
